@@ -37,11 +37,10 @@ def create_access_token(data:dict, expires_delta: Optional[timedelta]= None) -> 
     return encoded_jwt   
 
 
-# decode_access_token
-def decode_access_token(token:str) -> Optional[dict]:
-    """Decode JWT acess token"""
+def decode_access_token(token: str) -> Optional[dict]:
+    """Decode JWT access token"""
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         return payload
-    except JWTError:
+    except Exception as e:
         return None

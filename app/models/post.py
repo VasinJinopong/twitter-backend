@@ -7,7 +7,7 @@ class Post(Base):
     __tablename__ = "posts"
     __table_args__ = (
         Index("idx_post_owner_id", "owner_id"),
-        Index("idx_post_created_at", " created_at"),
+        Index("idx_post_created_at", "created_at"),
     )
 
     id = Column(Integer, primary_key=True, index=True)

@@ -22,15 +22,19 @@ SessionLocal = sessionmaker(
 
 Base = declarative_base()
 
+from fastapi.exceptions import HTTPException
+
 def get_db():
     """Dependency for database session"""
     db = SessionLocal()
     try:
         yield db
+    except HTTPException:
+        # ไม่ catch HTTPException
+        raise
     except Exception as e:
-        logger.error(f"Database error: {e}")
+        logger.error(f"Database error: {str(e)}", exc_info=True)
         db.rollback()
         raise
     finally:
         db.close()
-

@@ -52,7 +52,7 @@ def login(user: schemas.UserLogin, db:Session = Depends(get_db)):
 
     # Create access token
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = create_access_token(data={"sub": db_user.id},expires_delta=access_token_expires)
+    access_token = create_access_token(data={"sub": str(db_user.id)},expires_delta=access_token_expires)
 
     logger.info(f"User logged in: {db_user.email}")
 
