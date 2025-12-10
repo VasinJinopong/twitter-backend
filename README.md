@@ -45,6 +45,7 @@ twitter-backend/
 │   └── main.py                # FastAPI app setup
 ├── tests/
 │   ├── test_auth.py           # Auth tests
+│   ├── test_posts.py          # Posts tests
 │   └── test_dependencies.py   # Dependency tests
 ├── docker-compose.yml         # PostgreSQL + pgAdmin
 ├── .env                       # Environment variables (git ignored)
