@@ -46,7 +46,7 @@ jobs:
               API_V1_STR: /api/v1
               PROJECT_NAME: Twitter Backend API
               DEBUG: False
-              CORS_ORIGINS: ["*"]
+              CORS_ORIGINS: "*"
         run: |
           pytest tests/ -v
 
