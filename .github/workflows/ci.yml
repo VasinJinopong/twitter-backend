@@ -39,7 +39,14 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgresql://test_user:test_pass@localhost:5432/test_db
+              DATABASE_URL: postgresql://test_user:test_pass@localhost:5432/test_db
+              SECRET_KEY: ${{ secrets.SECRET_KEY }}
+              ALGORITHM: HS256
+              ACCESS_TOKEN_EXPIRE_MINUTES: 30
+              API_V1_STR: /api/v1
+              PROJECT_NAME: Twitter Backend API
+              DEBUG: False
+              CORS_ORIGINS: ["*"]
         run: |
           pytest tests/ -v
 
