@@ -276,3 +276,15 @@ For issues or questions, please open an issue on GitHub.
 
 ## Test CICD
 [x] Test
+
+## Testing
+
+Run tests:
+```bash
+pytest -v
+```
+
+Test coverage:
+```bash
+pytest --cov=app tests/
+```
