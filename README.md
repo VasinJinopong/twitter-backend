@@ -278,6 +278,56 @@ For issues or questions, please open an issue on GitHub.
 ## Test CICD
 [x] Test
 
+## Database Migrations (Alembic)
+
+### Initial setup (first time only)
+```bash
+# Already done - alembic folder exists
+alembic init alembic
+```
+
+### Create migration
+```bash
+# After changing models
+alembic revision --autogenerate -m "description of changes"
+```
+
+### Run migrations
+```bash
+# Apply all pending migrations
+alembic upgrade head
+
+# Rollback one migration
+alembic downgrade -1
+
+# Rollback all migrations
+alembic downgrade base
+```
+
+### View migration history
+```bash
+# See all migrations
+alembic history
+
+# See current version
+alembic current
+```
+
+### Example workflow
+```bash
+# 1. Edit app/models/user.py (add new column)
+# 2. Create migration
+alembic revision --autogenerate -m "add bio to users"
+
+# 3. Review generated migration file
+cat alembic/versions/*_add_bio_to_users.py
+
+# 4. Apply migration
+alembic upgrade head
+
+# 5. Check in pgAdmin - new column should exist
+```
+
 ## Testing
 
 Run tests:
